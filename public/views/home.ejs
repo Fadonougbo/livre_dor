@@ -1,0 +1,45 @@
+<%- include('header.ejs') %>
+
+
+<% 
+%>
+<main>
+    <h1>livre d'or</h1>
+    <div>
+        <section>
+            <h2><%= emptyForm %></h2>
+            <h2><%= valideForm %></h2>
+        </section>
+        
+        <form action="" method="POST">
+            <div>
+                <h3>Entrer votre message</h3>
+            </div>
+            <div>
+                <input type="text" name="name" value="<%= body.name||'' %>">
+            </div>
+            <div>
+                <textarea name="content" id="" cols="30" rows="10"><%= body.content||'' %></textarea>
+            </div>
+            <div>
+                <button type="submit" >envoyer</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <% rows.forEach(el => { %>
+            <% 
+                const {id,name,content,created_at}=el
+
+                const date=(new Date(created_at)).toLocaleDateString()
+            %>
+            <section>
+                <div>
+                    <h1><%= name %> <mark><%= date %></mark> </h1>
+                </div>
+                <p><%= content %></p>
+            </section>
+        <% }) %>
+    </div>
+</main>
+<%- include('header.ejs') %>
