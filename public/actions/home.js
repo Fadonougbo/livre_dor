@@ -41,7 +41,7 @@ const readElements=async ()=>{
 
     }catch(e)
     {
-        console.log(e.message,"message insertion dans la DB")
+        console.log(e.message,"messages read dans la DB")
     }
 }
 
@@ -54,7 +54,7 @@ const readElements=async ()=>{
 export const home=async (req,res)=>{
 
     const title="liver d'or";
-    let body={}
+    let body={};
 
     if(req.method==="POST")
     {
@@ -63,7 +63,7 @@ export const home=async (req,res)=>{
 
         if(content===""||name==="")
         {
-            req.flash("emptyForm","Veillez Remplire tous les champs message")
+            req.flash("emptyForm","Veillez Remplire tous les champs")
         }else 
         {
             /**

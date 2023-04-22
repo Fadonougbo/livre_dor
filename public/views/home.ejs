@@ -1,45 +1,47 @@
 <%- include('header.ejs') %>
 
-
-<% 
-%>
 <main>
-    <h1>livre d'or</h1>
-    <div>
-        <section>
-            <h2><%= emptyForm %></h2>
-            <h2><%= valideForm %></h2>
-        </section>
-        
+    <div class="container">
         <form action="" method="POST">
             <div>
-                <h3>Entrer votre message</h3>
+                <h3>Entrez votre message</h3>
             </div>
-            <div>
-                <input type="text" name="name" value="<%= body.name||'' %>">
+            <section>
+                <h2><%= emptyForm %></h2>
+                <h2><%= valideForm %></h2>
+            </section>
+            <div id="input_parent" >
+                <input type="text" name="name" value="<%= body.name||'' %>" placeholder="Votre nom" >
             </div>
-            <div>
-                <textarea name="content" id="" cols="30" rows="10"><%= body.content||'' %></textarea>
+            <div id="textarea_parent">
+                <textarea name="content" id="" cols="30" rows="10" placeholder="Votre message"><%= body.content||'' %></textarea>
             </div>
-            <div>
+            <div id="button_parent">
                 <button type="submit" >envoyer</button>
             </div>
         </form>
     </div>
-    <div>
+    <div id="message_container">
         <% rows.forEach(el => { %>
             <% 
                 const {id,name,content,created_at}=el
-
+                const firstLetter=name.substr(0,1);
                 const date=(new Date(created_at)).toLocaleDateString()
             %>
-            <section>
-                <div>
-                    <h1><%= name %> <mark><%= date %></mark> </h1>
+            <div class="card">
+                <div class="logo_parent" >
+                    <div class="logo" ><%= firstLetter %></div>
                 </div>
-                <p><%= content %></p>
-            </section>
+                    <section>
+                        <div>
+                            <h1><%= name %> <mark><%= date %></mark> </h1>
+                        </div>
+                        <p><%= content %></p>
+                </section>
+            </div>
+            
         <% }) %>
     </div>
 </main>
-<%- include('header.ejs') %>
+
+<%- include('footer.ejs') %>

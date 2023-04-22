@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url"
 import { dirname, join } from "node:path"
 import fastifyFlash from "@fastify/flash"
 import fastifyPostgres from "@fastify/postgres"
+import fastifyStatic from "@fastify/static"
 
 /**
  * Fastify
@@ -50,6 +51,11 @@ fastify.register(fastifyPostgres,{
     user:"root",
     password:"root"
 })
+
+fastify.register(fastifyStatic,{
+    root:join(dirname(fileURLToPath(import.meta.url)),"style/css")
+})
+
 
 
 /**
